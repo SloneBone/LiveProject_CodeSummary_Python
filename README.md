@@ -143,6 +143,11 @@ class NbaGameForm(ModelForm):
         )
 ```
 
+
+
+
+<a href="https://github.com/SloneBone/LiveProject_CodeSummary_Python/blob/main/Code_Snippets/screenShot_NBA_crispyform.png">Picture of Form Page</a>
+
 <h2>CRUD Functionality</h2>
 <p>
 
