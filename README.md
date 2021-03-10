@@ -6,9 +6,13 @@
 <h2>Introduction</h2>
 This is a summary of a project I completed on  a two week sprint(1/11/21 - 1/25/21) working with Python and the Django Framework.     I was tasked with building a interactive website for managing one's collection of things related to various hobbies, as well as API and Data Scraped content for those hobbies.  I decided to use sports as my hobby of interest-- more specifically the NBA.  I built my web application--so dubbed the "SportsApp", using the programming language Python and the powerful Django Framework along with some pip package installations to ensure that all team members' virtual environments were in sync. The SportsApp gives a user the ability to add/view/edit/delete saved NBA games to a WatchList Archive, create a favorite player profile, and even view current NBA Eastern and Conference Standings(via web scraping). Although ideally I would have liked to implement an Email API to send game time reminders to users or more webscraping to provide the the top NBA headlines, I am proud of what I was able to accomplish with my first live project!  With out further ado lets jump into it!
  
+ 
+<h2> Building the App</h2>
+<p> To start, I created an app through Djanago and registered it within the main project. I created my base and home templates, then added a function to render those pages. Lastly, I created a URLS file and registered it with the main app. 
+ *<a href="#">Homepage</a>
 
 <h2>CRUD Functionality</h2>
-<p>The first story assigned involved creating a new app for the project, naming it appropriately, and getting it to display a home page with basic content.
+<p>
 
 
 
