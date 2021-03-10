@@ -12,7 +12,7 @@ This is a summary of a project I completed on  a two week sprint(1/11/21 - 1/25/
 
 
 <h2>Creating the Model and Form</h2>
-<p> I created two models for this project. The first model is a NBA Game object and the second is a Favorite Player object. For the NBA Game model, I provided the choices for the Away Team and Home Team via the eastern and western conferences. To create the user input form, I created a new forms.py file and utilized a fe3w Django widgets to display choices on the users end. I made a template page for the form, then I created a views function to  render this page and connect it to my URLS file.
+<p> I created two models for this project. The first model is a NBA Game object and the second is a Favorite Player object. For the NBA Game model, I provided the choices for the Away Team and Home Team via the eastern and western conferences. 
  
  
 
@@ -89,7 +89,59 @@ NBA_TEAM = [
     ('Washington Wizards', 'Washington Wizards'),
 ]
 ```
+To create the user input form, I created a new forms.py file and utilized a few Django widgets to display choices on the users end. I made a template page for the form, then I created a views function to  render this page and connect it to my URLS file. I also utilized a, new to me, Django package called CrispyForms to make my form. 
 
+
+
+```Python
+class DateInput(forms.DateInput):
+    input_type = 'date'
+
+
+class TimeInput(forms.TimeInput):
+    input_type = 'time'
+    format('%H:%M',)
+
+
+class NbaGameForm(ModelForm):
+    class Meta:
+        model = SavedNbaGame
+        fields = '__all__'
+
+        widgets = {
+            'date_game': DateInput(),
+            'time_start': forms.TimeInput(attrs={'type': 'time'}),
+
+
+        }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.fields['home_team'].label = "Home Team: "
+        self.fields['away_team'].label = "Away Team: "
+        self.fields['date_game'].label = "Date of Game: "
+        self.fields['time_start'].label = "Start Time: "
+        self.fields['email'].label = "Contact Email: "
+        self.helper.layout = Layout(
+            Row(
+                Column('home_team', css_class='form-group makeinline col-md-4 mb-1'),
+                Column('away_team', css_class='form-group makeinline col-md-4- mb-1'),
+                css_class='form-row'
+            ),
+            Row(
+                Column('date_game', css_class='form-group makeinline col-md-4 mb-1'),
+                Column('time_start', css_class='form-group makeinline col-md-4 mb-1'),
+                css_class='form-row'
+            ),
+            Row(
+                Column('email', css_class='form-group col-md-6- mb-1'),
+                css_class='form-row'
+            ),
+            Submit('submit', 'Save'),
+            HTML('<a class="btn btn-danger" onclick="history.back()">Back</a>')
+        )
+```
 
 <h2>CRUD Functionality</h2>
 <p>
