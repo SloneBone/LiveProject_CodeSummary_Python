@@ -272,9 +272,9 @@ def confirm_delete(request):
         return redirect('add_game_archive')
 ```
 
-<h2>Web Scraping</h2>
-[Stories 6 & 7: Beautiful Soup]
-<p>For this story, I decided to add a page to my project displaying a table of the current NBA Standings for the Eastern and Western Conferences. I utilized web scraping for the first time to scrape data from a website(https://www.basketball-reference.com/leagues/NBA_2021_standings.html) that has the current standings. Due to the fact that this table is updated daily, so too will the standings table in my project.<p><br>
+<h2>Web Scraping via Beautiful Soup</h2>
+
+<p>For this story, I decided to add a page to my project displaying a table of the current NBA Standings for the Eastern and Western Conferences. I utilized web scraping for the first time to scrape data from a website(https://www.basketball-reference.com/leagues/NBA_2021_standings.html) that has the current standings. Due to the fact that this table is updated daily, so too will the standings table in my project. Being the first time I had attempted web scraping, I had trouble at the beginning trying to access the correct data via the  html code of the basketball reference webpage. Using Google Chrome's built in DevOps to inspect the desired data elements and their classes allowed me to  find what I needed. At this point I realized that I need to use the array position of the class element "right" to access each individual piece of data. As you can see in the code--  <p><br>
 <h3>Views.py page with corresponding function to succesfully pull table data</h3>
 
 
@@ -431,10 +431,10 @@ def nba_standings(request):
 {% endblock %}
 ```
 
-<a href="">Screenshot of Standings Page</a>
+<a href="https://github.com/SloneBone/LiveProject_CodeSummary_Python/blob/main/Code_Snippets/screenShot_standingsPage.png">Screenshot of Standings Page</a>
 
 
 
-<h2>Skills Acquired</h2>
-This sprint provided me with my first oppurtunity to meet with fellow students working in an Agile Framework environment. We utilized Azure DevOps as our platform of service and used User Stories as a means of being assigned tasks to be completed.  Git was implented as our version control system and gave me the chance to create my first working branch, perform commits, merges,  and push/pulls on an actual live project.  Although I did not work directly with my peers on this project, I was able to meet with them in a daily standup and weekly code retrospectives that really provided a lot of good dialogue about problems we faced, breakthough moments, or ideas we had.
+<h2>Conclusion</h2>
+This sprint provided me with my first oppurtunity to meet with fellow students working in an Agile Framework environment. We utilized Azure DevOps as our platform of service and used User Stories as a means of being assigned tasks to be completed.  Git was implented as our version control system and gave me the chance to create my first working branch, perform commits, merges,  and push/pulls on an actual live project.  Although I did not work directly with my peers on this project, I was able to meet with them in a daily standup and weekly code retrospectives that really provided a lot of good dialogue about problems we faced, breakthough moments, or ideas we had. I was also afforded the chance to learn many new things including CrispyForm and Web Scraping with Beautiful Soup. I look forward to using what I have learned here on future projects. 
 
