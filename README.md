@@ -150,10 +150,11 @@ class NbaGameForm(ModelForm):
 
 <h2>CRUD Functionality</h2>
 <p>After creating the model it was time to add the ability to Create, Read, Update(Edit) and Delete. To start we add corresponding functions.  
-
-
-
 <h2>Create</h2>
+
+
+
+
 ```Python
 # Create CRUD Functionality for adding NBA game to watchlist
 def add_nba_game(request):
@@ -179,9 +180,11 @@ def add_fav_player(request):
     context = {'form': form}
     return render(request, 'SportsApp/SportsApp_addFavPlayer.html', context)
 ```
-
-
 <h2>Read</h2>
+
+
+
+
 ```Python
 # Creating a function to get all the items from dB and send it to index.html template
 
@@ -214,10 +217,11 @@ def add_fav_archive(request):
         fav_list = paginator.page(paginator.num_pages)
     return render(request, 'SportsApp/SportsApp_favArchive.html', {'fav_list': fav_list})
 ```
-
-
-
 <h2>Details Page</h2>
+
+
+
+
 ```Python
 # Creating a function to get just one item from the dB and render it on details.html template
 def game_details(request, pk):
@@ -225,10 +229,6 @@ def game_details(request, pk):
     game = get_object_or_404(SavedNbaGame, pk=pk)
     return render(request, 'SportsApp/SportsApp_details.html', {'game': game})
 ```
-
-
-
-
 <h2>Update and Delete</h2>
 
 
@@ -276,6 +276,7 @@ def confirm_delete(request):
 [Stories 6 & 7: Beautiful Soup]
 <p>For this story, I decided to add a page to my project displaying a table of the current NBA Standings for the Eastern and Western Conferences. I utilized web scraping for the first time to scrape data from a website(https://www.basketball-reference.com/leagues/NBA_2021_standings.html) that has the current standings. Due to the fact that this table is updated daily, so too will the standings table in my project.<p><br>
 <h3>Views.py page with corresponding function to succesfully pull table data</h3>
+
 
 
  
