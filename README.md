@@ -9,7 +9,87 @@ This is a summary of a project I completed on  a two week sprint(1/11/21 - 1/25/
  
 <h2> Building the App</h2>
 <p> To start, I created an app through Djanago and registered it within the main project. I created my base and home templates, then added a function to render those pages. Lastly, I created a URLS file and registered it with the main app. 
- *<a href="#">Homepage</a>
+
+
+<h2>Creating the Model and Form</h2>
+<p> I created two models for this project. The first model is a NBA Game object and the second is a Favorite Player object. For the NBA Game model, I provided the choices for the Away Team and Home Team via the eastern and western conferences. To create the user input form, I created a new forms.py file and utilized a fe3w Django widgets to display choices on the users end. I made a template page for the form, then I created a views function to  render this page and connect it to my URLS file.
+ 
+ 
+
+ 
+```Python
+class SavedNbaGame(models.Model):
+    email = models.EmailField(max_length=50, blank=False, null=False)
+    home_team = models.CharField(max_length=50, blank=False, choices=NBA_TEAM)
+    away_team = models.CharField(max_length=50, blank=False, choices=NBA_TEAM)
+    date_game = models.DateField(blank=False)
+    time_start = models.TimeField(blank=False)
+    game_notes = models.TextField(max_length=250, default="", blank=True, null=True)
+
+    SavedNbaGame = models.Manager()
+
+    def __str__(self):
+        return "{} vs {} on {} at {}".format(self.home_team, self.away_team, self.date_game, self.time_start)
+```
+
+
+
+
+
+```Python
+class FavPlayer(models.Model):
+    email = models.EmailField(max_length=50, blank=False, null=False)
+    fav_player = models.CharField(max_length=50, blank=False)
+    corresponding_team = models.CharField(max_length=50, blank=False, choices=NBA_TEAM)
+
+    FavPlayer = models.Manager()
+
+    def __str__(self):
+        return "Hello {}, {} is playing tonight! Tune in and watch!".format(self.email, self.fav_player)
+```
+
+
+
+Example of choices provided for selecting Home Team or Away Team
+
+
+
+
+```Python
+NBA_TEAM = [
+    ('Atlanta Hawks', 'Atlanta Hawks'),
+    ('Boston Celtics', 'Boston Celtics'),
+    ('Brooklyn Nets', 'Brooklyn Nets'),
+    ('Charlotte Hornets', 'Charlotte Hornets'),
+    ('Chicago Bulls', 'Chicago Bulls'),
+    ('Cleveland Cavaliers', 'Cleveland Cavaliers'),
+    ('Dallas Mavericks', 'Dallas Mavericks'),
+    ('Denver Nuggets', 'Denver Nuggets'),
+    ('Detroit Pistons', 'Detroit Pistons'),
+    ('Golden State Warriors', 'Golden State Warriors'),
+    ('Houston Rockets', 'Houston Rockets'),
+    ('Indiana Pacers', 'Indiana Pacers'),
+    ('Los Angeles Clippers', 'Los Angeles Clippers'),
+    ('Los Angeles Lakers', 'Los Angeles Lakers'),
+    ('Memphis Grizzlies', 'Memphis Grizzlies'),
+    ('Miami Heat', 'Miami Heat'),
+    ('Milwaukee Bucks', 'Milwaukee Bucks'),
+    ('Minnesota Timberwolves', 'Minnesota Timberwolves'),
+    ('New Orleans Pelicans', 'New Orleans Pelicans'),
+    ('New York Knicks', 'New York Knicks'),
+    ('Oklahoma City Thunder', 'Oklahoma City Thunder'),
+    ('Orlando Magic', 'Orlando Magic'),
+    ('Philadelphia 76ers', 'Philadelphia 76ers'),
+    ('Phoenix Suns', 'Phoenix Suns'),
+    ('Portland Trailblazers', 'Portland Trailblazers'),
+    ('Sacramento Kings', 'Sacramento Kings'),
+    ('San Antonio Spurs', 'San Antonio Spurs'),
+    ('Toronto Raptors', 'Toronto Raptors'),
+    ('Utah Jazz', 'Utah Jazz'),
+    ('Washington Wizards', 'Washington Wizards'),
+]
+```
+
 
 <h2>CRUD Functionality</h2>
 <p>
